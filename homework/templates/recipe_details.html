@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recipe details
+{% endblock %}
+
+
+
+{% block body %}
+     <h1 class="h1">Table recipe detail</h1>
+    {% if error %}
+            <div class="error-message">
+                <p><strong>Ошибка:</strong> {{ error }}</p>
+                <p>Failed to load recipes.</p>
+            </div>
+    {% elif recipe %}
+    <div class="table-container">
+    <table class="table">
+
+        <thead class="thead-tn">
+            <tr class="table-body-tr">
+                <th>Name</th>
+                <th>Cook time</th>
+                <th>views</th>
+                <th>ingredients</th>
+                <th class="description-cell">description</th>
+            </tr>
+        </thead>
+        <tbody class="table-tbody-td">
+            <tr>
+                <td>{{recipe.name}}</td>
+                <td>{{recipe.cook_time}}</td>
+                <td>{{recipe.views}}</td>
+                <td>{{recipe.ingredients}}</td>
+                <td data-label="description" class="description-cell">{{recipe.description}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    {% else %}
+        <p class="no-details-message">No details</p>
+    {% endif %}
+    </div>
+
+
+{% endblock %}

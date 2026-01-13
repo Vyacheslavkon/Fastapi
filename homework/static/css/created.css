@@ -1,0 +1,100 @@
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+
+.h_1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 35px;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+    outline: none;
+}
+
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 8px;
+    color: #6c757d;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+
+button[type="submit"] {
+    background-color: #007bff; /* Ярко-синий цвет */
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.15em;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Темнее синий при наведении */
+    transform: translateY(-2px); /* Небольшое поднятие кнопки */
+}
+
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0a0a0;
+    font-style: italic;
+}

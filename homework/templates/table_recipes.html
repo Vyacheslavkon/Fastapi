@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Recipe
+{% endblock %}
+
+{% block body %}
+     <h1 class="h1">Table recipes</h1>
+    {% if error %}
+            <div>
+                <p><strong>Error:</strong> {{ error }}</p>
+                <p>Failed to load recipes.</p>
+            </div>
+    {% elif recipes %}
+    <table class="table">
+        <caption>List of recipes</caption>
+        <thead class="thead-tn">
+            <tr>
+                <th>Name</th>
+                <th>Cook time</th>
+                <th>views</th>
+            </tr>
+        </thead>
+        {% for recipe in recipes %}
+        <tbody>
+            <tr>
+                <td>{{recipe.name}}</td>
+                <td>{{recipe.cook_time}}</td>
+                <td>{{recipe.views}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No recipes</p>
+    {% endif %}
+
+{% endblock %}

@@ -9,9 +9,13 @@ image: python:3.12
 stages:
   - test
 
+default:
 
-before_script:
-    - pip install -r requirements.txt
+  before_script:
+      - pip install -r requirements.txt
+
+  tags:
+      - python-runner
 
 unittest:
   stage: test

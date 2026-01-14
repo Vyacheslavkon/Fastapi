@@ -37,7 +37,7 @@ isort:
   script:
     - isort --check-only  homework/
 
-flaske8:
+flake8:
   stage: test
   script:
     - flake8  homework/

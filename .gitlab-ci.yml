@@ -1,16 +1,16 @@
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 image: python:3.12
 
 
 stages:
-  - build
   - test
 
 
-before-script:
+before_script:
     - pip install -r requirements.txt
 
 unittest:
@@ -21,19 +21,19 @@ unittest:
 mypy:
   stage: test
   script:
-    - mypy src/
+    - mypy homework/
 
 black:
   stage: test
   script:
-    - black --diff --check src/
+    - black --diff --check  homework/
 
 isort:
   stage: test
   script:
-    - isort --check-only src/
+    - isort --check-only  homework/
 
-flask8:
+flake8:
   stage: test
   script:
-    - flake8 src/
+    - flake8  homework/

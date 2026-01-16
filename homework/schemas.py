@@ -1,11 +1,9 @@
 from pydantic import BaseModel, ConfigDict
 
 
-
 class BaseRecipe(BaseModel):
     name: str
     cook_time: int
-
 
 
 class AddRecipe(BaseRecipe):

@@ -8,8 +8,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from starlette.staticfiles import StaticFiles
 from sqlalchemy.sql import ColumnElement
+from starlette.staticfiles import StaticFiles
 
 import homework.models
 import homework.schemas

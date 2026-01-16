@@ -1,6 +1,6 @@
 name: Python CI
 
-# Условия запуска: при пуше в main или создании PR
+
 on:
   push:
     branches: [ "main" ]
@@ -9,51 +9,43 @@ on:
 
 jobs:
   build:
-    # Используем актуальную версию Ubuntu
+
     runs-on: ubuntu-latest
 
     strategy:
-      # Тестирование на нескольких версиях Python (матрица)
       matrix:
         python-version: ["3.12"]
 
     steps:
-      # 1. Копируем код из репозитория
       - uses: actions/checkout@v4
 
-      # 2. Настраиваем окружение Python
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip' # Автоматическое кэширование зависимостей для ускорения
+          cache: 'pip'
 
-      # 3. Устанавливаем зависимости
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
 
-      # 4. Проверка кода линтером (на наличие синтаксических ошибок)
       - name: Lint with flake8
         run: |
           # Останавливает сборку при критических ошибках
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Run isort (check imports)
-        # Флаг --check-only заставляет CI упасть, если импорты не отсортированы
         run: isort . --check-only --profile black
 
       - name: Run black (check formatting)
-        # Флаг --check сообщает об ошибке без изменения самих файлов
         run: black . --check
 
       - name: Run mypy (type checking)
-        # Проверяет типы во всем проекте
         run: mypy .
 
-      # 5. Запуск тестов
       - name: Test with pytest
         run: |
           pytest
